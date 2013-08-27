@@ -6,75 +6,29 @@
 	<title>Index</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
-<body>
-	<div class="container">
+<body ng-app="application">
+	<div class="container" ng-controller="account">
 		<div class="row">
 			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="account in accounts">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							Bank of Ukraine
+							{{account.name}}
 						</div>
 						<div class="panel-body">
-							<h2 style="text-align:center;">₴100.000</h2>
+							<h2 style="text-align:center;">{{account.balance}}</h2>
 						</div>
 						<table class="table">
-							<tr class="success">
-								<td>₴25.000</td>
-								<td>Salary</td>
-								<td>18.04.2013 19:00:45</td>
+							<tr ng-class="{ 'success': account.transaction.income, 'danger': !account.transaction.income }">
+								<td>{{account.transaction.ammount}}</td>
+								<td>{{account.transaction.category}}</td>
+								<td>{{account.transaction.date}}</td>
 							</tr>
 						</table>
 						<div class="panel-footer">
 							<div class="btn-group btn-group-justified">
 								<a data-toggle="modal" href="#modal" class="btn btn-success">Income</a>
 								<a data-toggle="modal" href="#modal" class="btn btn-danger">Expense</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							Bank of Amerika
-						</div>
-						<div class="panel-body">
-							<h2 style="text-align:center;">$2.000</h2>
-						</div>
-						<table class="table">
-							<tr class="danger">
-								<td>$1.000</td>
-								<td>Transport</td>
-								<td>18.04.2013 19:00:45</td>
-							</tr>
-						</table>
-						<div class="panel-footer">
-							<div class="btn-group btn-group-justified">
-								<a href="" class="btn btn-success">Income</a>
-								<a href="" class="btn btn-danger">Expense</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							Bank of Germany
-						</div>
-						<div class="panel-body">
-							<h2 style="text-align:center;">€25.000</h2>
-						</div>
-						<table class="table">
-							<tr class="success">
-								<td>€5.000</td>
-								<td>Debit</td>
-								<td>18.04.2013 19:00:45</td>
-							</tr>
-						</table>
-						<div class="panel-footer">
-							<div class="btn-group btn-group-justified">
-								<a href="" class="btn btn-success">Income</a>
-								<a href="" class="btn btn-danger">Expense</a>
 							</div>
 						</div>
 					</div>
@@ -156,5 +110,7 @@
 	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="app/application.js"></script>
+	<script type="text/javascript" src="app/controllers/account.js"></script>
 </body>	
 </html>
