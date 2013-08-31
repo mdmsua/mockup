@@ -5,10 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Index</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body ng-app="application">
 	<div class="container" ng-controller="account">
-		<div class="row">
+		<div class="spinner" ng-show="busy"></div>
+		<div class="row ng-cloak">
 			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="account in accounts">
 					<div class="panel panel-primary">
@@ -111,6 +113,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="app/application.js"></script>
+	<script type="text/javascript" src="app/services/data.js"></script>
 	<script type="text/javascript" src="app/controllers/account.js"></script>
 </body>	
 </html>
