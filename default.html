@@ -10,9 +10,17 @@
 <body ng-app="application">
 	<div class="container" ng-controller="account">
 		<div class="spinner" ng-show="busy"></div>
-		<div class="row ng-cloak">
+		<div class="row" ng-hide="busy">
+			<div class="page-header">
+				<h1>Accounts</h1>
+			</div>
+			<ul class="nav nav-pills">
+				<li ng-class="{active: view == true}"><a href="javascript:void()" ng-click="switch(true)">Active&nbsp;<span class="badge">{{getTotal(true)}}</span></a></li>
+				<li ng-class="{active: view == false}"><a href="javascript:void()" ng-click="switch(false)">Archive&nbsp;<span class="badge">{{getTotal(false)}}</span></a></li>
+			</ul>
+			<br>
 			<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="account in accounts">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="account in accounts | filter: { active: view }">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							{{account.name}}
@@ -29,8 +37,8 @@
 						</table>
 						<div class="panel-footer">
 							<div class="btn-group btn-group-justified">
-								<a data-toggle="modal" href="#modal" class="btn btn-success">Income</a>
-								<a data-toggle="modal" href="#modal" class="btn btn-danger">Expense</a>
+								<a data-toggle="modal" href="#modal" class="btn btn-success" ng-disabled="!account.active">Income</a>
+								<a data-toggle="modal" href="#modal" class="btn btn-danger" ng-disabled="!account.active">Expense</a>
 							</div>
 						</div>
 					</div>
@@ -110,8 +118,9 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
 	<script type="text/javascript" src="app/application.js"></script>
 	<script type="text/javascript" src="app/services/data.js"></script>
 	<script type="text/javascript" src="app/controllers/account.js"></script>
