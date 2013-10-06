@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		{{account.name}}
+	</div>
+	<div class="panel-body">
+		<h2 style="text-align:center;">{{account.balance}}</h2>
+	</div>
+	<table class="table">
+		<tr ng-class="{ 'success': account.transaction.income, 'danger': !account.transaction.income }">
+			<td>{{account.transaction.ammount}}</td>
+			<td>{{account.transaction.category}}</td>
+			<td>{{account.transaction.date}}</td>
+		</tr>
+	</table>
+	<div class="panel-footer">
+		<div class="btn-group btn-group-justified">
+			<a data-toggle="modal" href="#modal" class="btn btn-success" ng-disabled="!account.active">Income</a>
+			<a data-toggle="modal" href="#modal" class="btn btn-danger" ng-disabled="!account.active">Expense</a>
+		</div>
+	</div>
+</div>

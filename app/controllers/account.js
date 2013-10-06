@@ -1,4 +1,4 @@
-application.controller("account", function ($scope, data) {
+application.controller("", function ($scope, data) {
 	$scope.accounts = [];
 	$scope.busy = true;
 	$scope.view = true;
